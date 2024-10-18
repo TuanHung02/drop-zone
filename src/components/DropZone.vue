@@ -194,7 +194,7 @@ export default defineComponent({
 
         const formatSize = (size: number) => {
             const kb = size / 1024;
-            return `${Math.round(kb)}kB`;
+            return `${kb.toFixed(2)}kB`;
         };
 
         return {
