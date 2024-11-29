@@ -24,11 +24,13 @@
 import fileIcon from "../assets/icon/file.png";
 import { defineProps, defineEmits } from "vue";
 
-defineProps({
-    files: Array,
-});
-
+// Định nghĩa kiểu cho prop 'files'
+const props = defineProps<{
+    files: File[];  // Mảng các đối tượng kiểu File
+}>();
+console.log(props);
 const emits = defineEmits(["removeFile"]);
+
 const getFileIcon = (file: File) => {
     const fileType = file?.name?.split(".").pop();
     if (!fileType) {
@@ -58,6 +60,7 @@ const removeFile = (index: number) => {
     emits("removeFile", index);
 };
 </script>
+
 
 
 <style scoped>
