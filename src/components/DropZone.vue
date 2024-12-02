@@ -16,20 +16,11 @@
             <FileList :files="visibleFiles" @removeFile="handleRemoveFile" />
 
             <!-- Navigation -->
-            <svg v-if="files.length > 3 && currentEndIndex < files.length" @click="nextFiles" width="32" height="32"
-                viewBox="0 0 32 32" class="svg-next">
-                <g opacity="0.4">
-                    <circle cx="16" cy="16" r="16" fill="#627D98" />
-                    <path d="M13 9L18 16L13 23" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-                </g>
-            </svg>
-            <svg v-if="currentStartIndex > 0" @click="prevFiles" width="32" height="32" viewBox="0 0 32 32"
-                class="svg-back">
-                <g opacity="0.4">
-                    <circle cx="16" cy="16" r="16" fill="#627D98" />
-                    <path d="M18 9L13 16L18 23" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-                </g>
-            </svg>
+            <FileNavigate v-show="files.length > 3 && currentEndIndex < files.length" direction="next"
+                svgClass="svg-next" style="top: 270px" @click="nextFiles" />
+            <FileNavigate v-show="currentStartIndex > 0" direction="prev" svgClass="svg-back"
+                style="top:270px; right: 100%" @click="prevFiles" />
+
 
             <!-- Error Message -->
             <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
@@ -41,6 +32,7 @@
 import { ref, computed, onMounted, defineProps } from "vue";
 import CloundIcon from "./icons/CloundIcon.vue";
 import FileList from "./FileList.vue";
+import FileNavigate from "./FileNavigate.vue";
 
 const props = defineProps<{
     maxSize: number
@@ -82,6 +74,7 @@ const handleFileChange = (event: Event) => {
     if (target.files) {
         addFiles(Array.from(target.files));
     }
+    target.value = "";
 };
 
 const handleDrop = (event: DragEvent) => {
@@ -147,6 +140,7 @@ const prevFiles = () => {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    position: relative;
 }
 
 .upload-box {
