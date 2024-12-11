@@ -21,7 +21,6 @@
             <FileNavigate v-show="currentStartIndex > 0" direction="prev" svgClass="svg-back"
                 style="top:270px; right: 100%" @click="prevFiles" />
 
-
             <!-- Error Message -->
             <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
         </div>
