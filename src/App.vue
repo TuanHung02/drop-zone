@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DropZone from './components/DropZone.vue';
+//commit
 </script>
 
 <template>
@@ -8,6 +9,4 @@ import DropZone from './components/DropZone.vue';
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
