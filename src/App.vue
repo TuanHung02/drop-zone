@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DropZone from './components/DropZone.vue';
-//commit
+//commit some thing
 </script>
 
 <template>
